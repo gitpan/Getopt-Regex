@@ -1,12 +1,12 @@
 use ExtUtils::MakeMaker;
 use Config;
 
-$Version = '0.01';
+$Version = '0.02';
 
 WriteMakefile(
-               'NAME'     => 'Getopt::Regex',
-               'LINKTYPE' => '$(INST_PM)',
-               'VERSION'  => $Version,
-               'dist'     => { SUFFIX => 'gz', COMPRESS => 'gzip -f' },
-               'clean' 	  => {'FILES' => '*~'},
-);
+	      'NAME'     => 'Getopt::Regex',
+	      linkext => {LINKTYPE => ''}, # not needed for MakeMakers >= 5
+	      'VERSION'  => $Version,
+	      'dist'     => { SUFFIX => 'gz', COMPRESS => 'gzip -f' },
+	      'clean' 	  => {'FILES' => '*~'},
+	      );

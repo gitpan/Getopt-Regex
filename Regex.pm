@@ -1,4 +1,11 @@
 # $Id: Options.pm,v 1.3 1995/12/16 09:48:28 willijar Exp $
+
+require Exporter;
+package Getopt::Regex;
+@ISA=qw(Exporter);
+@EXPORT_OK=qw(GetOptions);
+use strict; 
+
 =head1 NAME
 
 Getopt::Regex - handle command line options flexibly using regular expressions 
@@ -33,7 +40,7 @@ The simplest use is to set a boolean variable if an argument is set
 
  GetOptions(\@ARGV,['-[v|V]',\$bool,0]);
 
-If the option '-v' or '-V' occurs $bool will be set to 1, otherwise
+If the option C<'-v'> or C<'-V'> occurs $bool will be set to 1, otherwise
 it is left unchanged.
 
 A subsequent command line argument may be used as as an option argument
@@ -106,12 +113,6 @@ package.
 John A.R. Williams, <J.A.R.Williams@aston.ac.uk>
 
 =cut
-
-require Exporter;
-package Getopt::Regex;
-@ISA=qw(Exporter);
-@EXPORT_OK=qw(GetOptions);
-use strict; 
 
 sub GetOptions {
   my ($argv,@options)=@_;
