@@ -1,4 +1,4 @@
-# $Id: Options.pm,v 1.3 1995/12/16 09:48:28 willijar Exp $
+# $Id: Regex.pm,v 1.2 2002/05/27 13:16:55 willijar Exp $
 
 require Exporter;
 package Getopt::Regex;
@@ -89,7 +89,14 @@ used.
 
 =head1 HISTORY
 
-$Log: Options.pm,v $
+$Log: Regex.pm,v $
+Revision 1.2  2002/05/27 13:16:55  willijar
+Added in bug fix given be Edmond Abrahamian <edmond@tripos.com> which
+permits it to work if an argument is zero (but not "").
+
+Revision 1.1  2002/05/27 13:14:53  willijar
+Initial revision
+
 Revision 1.3  1995/12/16 09:48:28  willijar
 Rename package to be more consistant with guidlines
 
@@ -122,7 +129,7 @@ sub GetOptions {
       @{$argv}=();
       my $arg;
     argloop:
-      while ($arg=shift @args) {
+      while (($arg=shift @args) ne "") {
 	  if ($arg=~/$regex/) {
 	      my $val=1;
 	      if ($takesarg) { $val=shift @args; }
